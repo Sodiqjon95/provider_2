@@ -33,10 +33,7 @@ class UserViewModel extends ChangeNotifier {
   void deleteAllUsers()async{
     isLoading = true;
     notifyListeners();
-
     await userRepository.deleteAllUsers();
-    userData = await userRepository.getUserData();
-    await userRepository.insertUserFromApi(userData: userData!);
     cachedUsers = await userRepository.getCachedUsers();
     isLoading = false;
     notifyListeners();
